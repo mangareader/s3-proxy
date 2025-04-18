@@ -20,7 +20,7 @@ jobs:
     - name: Install modules
       run: go mod tidy
     - name: Build app
-      run: go build -o ./s3-proxy ./cmd/s3-proxy/main.go
+      run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./s3-proxy ./cmd/s3-proxy/main.go
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v4
