@@ -78,6 +78,8 @@ func newClient(tgt *config.TargetConfig, metricsCtx metrics.Client) (Client, err
 		sessionConfig.Endpoint = aws.String(tgt.Bucket.S3Endpoint)
 		sessionConfig.S3ForcePathStyle = aws.Bool(true)
 	}
+	sessionConfig.S3ForcePathStyle = aws.Bool(false)
+
 	// Check if ssl needs to be disabled
 	if tgt.Bucket.DisableSSL {
 		sessionConfig.DisableSSL = aws.Bool(true)
